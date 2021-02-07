@@ -52,5 +52,5 @@ const pear = new Item({
     rating: 7, 
     review: "Awesome fruit!"
 })
-// mango.save()
-// pear.save()
+mango.save()
+pear.save()
