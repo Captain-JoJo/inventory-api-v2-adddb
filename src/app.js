@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const cors = require("cors")
-const port = 4000
+const port = 5000
 const mongoose = require("mongoose")
 mongoose.connect('mongodb+srv://inventoryUser:inventory@inventorycluster0.4qlqj.mongodb.net/inventoryDB?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true})
 
