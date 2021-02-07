@@ -10,7 +10,7 @@ app.use(cors())
 app.use("/", router)
 
 router.route("/getData").get(function(req, res){
-    DataTransferItem.find({}, function(err, result) {
+    Item.find({}, function(err, result) {
         if(err) {
             res.send(err)
         } else {
@@ -38,11 +38,19 @@ const inventorySchema = new mongoose.Schema({
 })
 
 const Item = mongoose.model("Item", inventorySchema)
+
+//Connect to text box in UI(CRUD)
+
 const mango = new Item({
     name: "Mango",
     rating: 9, 
     review: "Great fruit!"
 })
-mango.save()
 
-
+const pear = new Item({
+    name: "Pear",
+    rating: 7, 
+    review: "Awesome fruit!"
+})
+// mango.save()
+// pear.save()
