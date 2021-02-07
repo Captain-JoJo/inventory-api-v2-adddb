@@ -3,7 +3,7 @@ const app = express()
 const cors = require("cors")
 const port = 4000
 const mongoose = require("mongoose")
-mongoose.connect('mongodb://localhost:27017/inventoryDB', {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect('mongodb+srv://inventoryUser:inventory@inventorycluster0.4qlqj.mongodb.net/inventoryDB?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true})
 
 const router = express.Router()
 app.use(cors())
