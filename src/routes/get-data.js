@@ -8,6 +8,7 @@ const inventorySchema = require('../db/models/item')
 app.use(cors())
 app.use("/", router)
 
+//Single router
 router.route("/getData").get(function(req, res){
     const Item = mongoose.model("Item", inventorySchema)
     Item.find({}, function(err, result) {
