@@ -1,7 +1,6 @@
 const mongoose = require("mongoose")
 const db = require('../config')
-mongoose.connect(db.mongoURL, {useNewUrlParser: true, useUnifiedTopology: true})
-//'mongodb+srv://inventoryUser:inventory@inventorycluster0.4qlqj.mongodb.net/inventoryDB?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(db.mongoURI, {useNewUrlParser: true, useUnifiedTopology: true})
 
 //MongoDB schema
 const inventorySchema = new mongoose.Schema({
