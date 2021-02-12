@@ -38,10 +38,8 @@ const inventorySchema = require('../db/models/item')
 //       })
 // }
 
-router.route("/getData").get(function(req, res,next){
-    // res.header("Access-Control-Allow-Origin", "*");
-    // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    // next();
+router.route("/getData").get(function(req, res){
+    res.header("Access-Control-Allow-Origin", "https://captain-jojo.github.io");
     const Item = mongoose.model("Item", inventorySchema)
     Item.find({}, function(err, result) {
         if(err) {
