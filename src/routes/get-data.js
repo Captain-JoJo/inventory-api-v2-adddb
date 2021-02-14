@@ -5,8 +5,26 @@ const cors = require("cors")
 const mongoose = require("mongoose")
 const inventorySchema = require('../db/models/item')
 
+//Inserts One all data
+router.route("/insertData").get(function(req, res){
+    res.header("Access-Control-Allow-Origin", "https://captain-jojo.github.io");
+    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+    const body = req.body
+    console.log('get-data request body', req.body);
 
+    const Item = mongoose.model("Item", inventorySchema)
+    Item.create({name: 'CaptainMarvel'}, function(err, result) {
+        if(err) {
+            res.send(err)
+            console.log('error to insert one', err);
+        } else {
+            res.send(result)
+            console.log('trying to create one item', result);
+        }
+    })
+})
 
+//Gets all data
 router.route("/getData").get(function(req, res){
     res.header("Access-Control-Allow-Origin", "https://captain-jojo.github.io");
     res.header("Access-Control-Allow-Origin", "http://localhost:3000");
@@ -20,6 +38,7 @@ router.route("/getData").get(function(req, res){
     })
 })
 
+//Deletes all data
 router.route("/deleteAll").get(function(req, res){
     res.header("Access-Control-Allow-Origin", "https://captain-jojo.github.io");
     res.header("Access-Control-Allow-Origin", "http://localhost:3000");
@@ -29,14 +48,25 @@ router.route("/deleteAll").get(function(req, res){
             res.send(err)
         } else {
             res.send(result)
+            console.log('removed everything', result);
         }
     })
 })
 
-module.exports = router
-
-
-
+//Deletes one item
+router.route("/deleteOne").get(function(req, res){
+    res.header("Access-Control-Allow-Origin", "https://captain-jojo.github.io");
+    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+    const Item = mongoose.model("Item", inventorySchema)
+    Item.deleteOne({}, function(err, result) {
+        if(err) {
+            res.send(err)
+        } else {
+            res.send(result)
+            console.log('deleted one result', result);
+        }
+    })
+})
 
 
 // const corsOptions = {
