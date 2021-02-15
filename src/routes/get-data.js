@@ -5,7 +5,8 @@ const inventorySchema = require('../db/models/item')
 
 //Inserts One all data
 router.route("/insertData").post(function(req, res){
-    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Origin", "https://captain-jojo.github.io");
+    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
     const body = req.body
     const body2 = res.body
     console.log('get-data request body', body);
