@@ -9,7 +9,7 @@ mongoose.connect(db.mongoURI, {useNewUrlParser: true, useUnifiedTopology: true})
 const inventorySchema = new mongoose.Schema({
     name: {
         type: String,
-        required: [true, "Need a name"]
+        required: [false, "Need a name"]
     },
     rating: {
         type: Number,

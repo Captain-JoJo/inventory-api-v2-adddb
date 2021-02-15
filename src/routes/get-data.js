@@ -1,19 +1,18 @@
 const express = require('express')
-const app = express()
 const router = express.Router()
-const cors = require("cors")
 const mongoose = require("mongoose")
 const inventorySchema = require('../db/models/item')
 
 //Inserts One all data
-router.route("/insertData").get(function(req, res){
-    res.header("Access-Control-Allow-Origin", "https://captain-jojo.github.io");
-    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+router.route("/insertData").post(function(req, res){
+    res.header("Access-Control-Allow-Origin", "*");
     const body = req.body
-    console.log('get-data request body', req.body);
+    const body2 = res.body
+    console.log('get-data request body', body);
+    console.log('get-data response body', body2);
 
     const Item = mongoose.model("Item", inventorySchema)
-    Item.create({name: 'CaptainMarvel'}, function(err, result) {
+    Item.create({}, function(err, result) {
         if(err) {
             res.send(err)
             console.log('error to insert one', err);
@@ -67,6 +66,8 @@ router.route("/deleteOne").get(function(req, res){
         }
     })
 })
+
+module.exports = router
 
 
 // const corsOptions = {
