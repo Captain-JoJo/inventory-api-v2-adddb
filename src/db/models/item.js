@@ -9,7 +9,7 @@ mongoose.connect(db.mongoURI, {useNewUrlParser: true, useUnifiedTopology: true})
 const inventorySchema = new mongoose.Schema({
     name: {
         type: String,
-        required: [false, "Need a name"]
+        required: [true, "Need a name"]
     },
     rating: {
         type: Number,
@@ -19,12 +19,12 @@ const inventorySchema = new mongoose.Schema({
     review: String
 })
 
-const Item = mongoose.model("Item", inventorySchema)
-const pear = new Item({
-    name: "Pear",
-    rating: 7, 
-    review: "Awesome fruit!"
-})
-pear.save()
+// const Item = mongoose.model("Item", inventorySchema)
+// const pear = new Item({
+//     name: "Pear",
+//     rating: 7, 
+//     review: "Awesome fruit!"
+// })
+// pear.save()
 
 module.exports = inventorySchema

@@ -3,23 +3,29 @@ const router = express.Router()
 const mongoose = require("mongoose")
 const inventorySchema = require('../db/models/item')
 
+const Item = mongoose.model("Item", inventorySchema)
+
 //Inserts One all data
-router.route("/insertData").post(function(req, res){
+router.route("/insertData").get(function(req, res){
     res.header("Access-Control-Allow-Origin", "https://captain-jojo.github.io");
     res.header("Access-Control-Allow-Origin", "http://localhost:3000");
     const body = req.body
     const body2 = res.body
     console.log('get-data request body', body);
     console.log('get-data response body', body2);
+    console.log('get-data request headers', req.headers);
+    console.log('get-data request params', req.params);
+    console.log('get-data request query', req.query);
 
-    const Item = mongoose.model("Item", inventorySchema)
-    Item.create({}, function(err, result) {
-        if(err) {
-            res.send(err)
-            console.log('error to insert one', err);
+    //Create new MongoDB schema model
+    const newItem = new Item({
+        name: req.query.name
+    })
+    newItem.save(function(err){
+        if(!err){
+            res.send("Saved new Item in DB")
         } else {
-            res.send(result)
-            console.log('trying to create one item', result);
+            res.send("Item did not save in the DB", err)
         }
     })
 })
@@ -28,7 +34,6 @@ router.route("/insertData").post(function(req, res){
 router.route("/getData").get(function(req, res){
     res.header("Access-Control-Allow-Origin", "https://captain-jojo.github.io");
     res.header("Access-Control-Allow-Origin", "http://localhost:3000");
-    const Item = mongoose.model("Item", inventorySchema)
     Item.find({}, function(err, result) {
         if(err) {
             res.send(err)
@@ -42,7 +47,6 @@ router.route("/getData").get(function(req, res){
 router.route("/deleteAll").get(function(req, res){
     res.header("Access-Control-Allow-Origin", "https://captain-jojo.github.io");
     res.header("Access-Control-Allow-Origin", "http://localhost:3000");
-    const Item = mongoose.model("Item", inventorySchema)
     Item.deleteMany({}, function(err, result) {
         if(err) {
             res.send(err)
@@ -57,7 +61,6 @@ router.route("/deleteAll").get(function(req, res){
 router.route("/deleteOne").get(function(req, res){
     res.header("Access-Control-Allow-Origin", "https://captain-jojo.github.io");
     res.header("Access-Control-Allow-Origin", "http://localhost:3000");
-    const Item = mongoose.model("Item", inventorySchema)
     Item.deleteOne({}, function(err, result) {
         if(err) {
             res.send(err)
