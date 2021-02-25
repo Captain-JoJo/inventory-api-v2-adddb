@@ -19,8 +19,7 @@ const Item = mongoose.model("Item", inventorySchema)
 
 //Inserts One all data
 router.route("/insertData").get(function(req, res){
-    res.header("Access-Control-Allow-Origin", "https://captain-jojo.github.io");
-    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+    res.header("Access-Control-Allow-Origin", "*");
     const body = req.body
     const body2 = res.body
     console.log('get-data request body', body);
@@ -47,8 +46,7 @@ router.route("/insertData").get(function(req, res){
 
 //Gets all data
 router.route("/getData").get(function(req, res){
-    res.header("Access-Control-Allow-Origin", "https://captain-jojo.github.io");
-    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+    res.header("Access-Control-Allow-Origin", "*");
     Item.find({}, function(err, result) {
         if(err) {
             res.send(err)
@@ -60,8 +58,7 @@ router.route("/getData").get(function(req, res){
 
 //Deletes all data
 router.route("/deleteAll").get(function(req, res){
-    res.header("Access-Control-Allow-Origin", "https://captain-jojo.github.io");
-    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+    res.header("Access-Control-Allow-Origin", "*");
     Item.deleteMany({}, function(err, result) {
         if(err) {
             res.send(err)
@@ -74,8 +71,7 @@ router.route("/deleteAll").get(function(req, res){
 
 //Deletes one item
 router.route("/deleteOne").get(function(req, res){
-    res.header("Access-Control-Allow-Origin", "https://captain-jojo.github.io");
-    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+    res.header("Access-Control-Allow-Origin", "*");
     Item.deleteOne({}, function(err, result) {
         if(err) {
             res.send(err)
