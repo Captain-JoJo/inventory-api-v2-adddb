@@ -11,11 +11,11 @@ const inventorySchema = new mongoose.Schema({
         type: String,
         required: [true, "Need a name"]
     },
-    rating: {
-        type: Number,
-        min: 1,
-        max: 10
-    },
+    // rating: {
+    //     type: Number,
+    //     min: 1,
+    //     max: 10
+    // },
     review: String
 })
 
