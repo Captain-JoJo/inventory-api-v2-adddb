@@ -1,5 +1,4 @@
 const express = require('express')
-const bodyParser = require("body-parser")
 const cors = require("cors");
 const app = express()
 const getRoutes = require('./routes')
@@ -9,7 +8,7 @@ const updateItemRoute = require('./routes/update-items')
 const deleteItemRoute = require('./routes/delete-items')
 const port = process.env.PORT || 5000
 
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(express.urlencoded({extended: true}))
 app.use(express.static("public"))
 app.use(express.json());
 app.use(cors());
