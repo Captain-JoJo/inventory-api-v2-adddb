@@ -1,7 +1,6 @@
 const express = require('express')
 const cors = require("cors");
 const app = express()
-const getRoutes = require('./routes')
 const getItemRoute = require('./routes/get-items')
 const insertItemRoute = require('./routes/insert-items')
 const updateItemRoute = require('./routes/update-items')
@@ -14,7 +13,6 @@ app.use(express.json());
 app.use(cors());
 
 app.use(getItemRoute, insertItemRoute, updateItemRoute, deleteItemRoute)
-//app.use(getRoutes)
 
 app.listen(port, () => {
     console.log(`Inventory app listening at ${port}`);
