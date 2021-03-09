@@ -8,19 +8,16 @@ const inventorySchema = new mongoose.Schema({
         type: String,
         required: [true, "Need a name"]
     },
-    // rating: {
-    //     type: Number,
-    //     min: 1,
-    //     max: 10
-    // },
-    review: String
+    qty: {
+        type: Number,
+        required: [true, "Need a quantity"]
+    },
 })
 
 // const Item = mongoose.model("Item", inventorySchema)
 // const pear = new Item({
 //     name: "Pear",
-//     rating: 7, 
-//     review: "Awesome fruit!"
+//     qty: 7
 // })
 // pear.save()
 

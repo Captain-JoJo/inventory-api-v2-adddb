@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const mongoose = require("mongoose")
-const inventorySchema = require('../db/models/item')
+const inventorySchema = require('../../db/models/item')
 
 const Item = mongoose.model("Item", inventorySchema)
 
