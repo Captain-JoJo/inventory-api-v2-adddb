@@ -12,6 +12,9 @@ const inventorySchema = new mongoose.Schema({
         type: Number,
         required: [true, "Need a quantity"]
     },
+    fav: {
+        type: Boolean
+    }
 })
 
 // const Item = mongoose.model("Item", inventorySchema)
